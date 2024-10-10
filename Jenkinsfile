@@ -39,7 +39,7 @@ pipeline {
 		defectDojoPublisher(
 			artifact:'/home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap/zap_xml_report.xml',
 			productName: 'Juice Shop',
-			scanType: 'ZAP Scan'
+			scanType: 'ZAP Scan',
 			engagementName: 'patryk.siewert@opi.org.pl')
         }
     }
