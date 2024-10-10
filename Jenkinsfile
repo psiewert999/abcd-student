@@ -34,10 +34,10 @@ pipeline {
         always {
         	script{
             sh '''
-                docker stop juice-shop; docker stop zap || true
+                docker stop juice-shop || true
                             '''
 		defectDojoPublisher(
-			artifact:'/home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap/zap_xml_report.xml',
+			artifact:'/home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap/reports/zap_xml_report.xml',
 			productName: 'Juice Shop',
 			scanType: 'ZAP Scan',
 			engagementName: 'patryk.siewert@opi.org.pl')
