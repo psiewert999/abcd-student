@@ -37,13 +37,11 @@ pipeline {
                 docker stop zap juice-shop
             '''
         }
-    }
+    	}
 	
 	stage('Example') {
             steps {
                 echo 'Hello!'
                 sh 'ls -la'
-            }
-        }
-    }
+}}}}}
 
