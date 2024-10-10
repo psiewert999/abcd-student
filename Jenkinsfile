@@ -34,9 +34,13 @@ pipeline {
         always {
         	script{
             sh '''
-                docker cp zap:/zap/wrk/zap_html_report.html /var/jenkins_home/workspace/ABCD PIPELINE@tmp/zap_html_report.html
                 docker stop juice-shop; docker stop zap || true
                             '''
+		defectDojoPublisher(
+			artifact:'/home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap/zap_xml_report.xml',
+			productName: 'Juice Shop',
+			scanType: 'ZAP Scan'
+			engagementName: 'patryk.siewert@opi.org.pl')
         }
     }
 }
