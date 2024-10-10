@@ -34,11 +34,11 @@ pipeline {
         always {
         	script{
             sh '''
-                docker cp zap:/zap/wrk/zap_html_report.html ${pwd}/reports/za[_html_report.html
+                docker cp zap:/zap/wrk/zap_html_report.html ${pwd}/reports/zap_html_report.html
                 docker stop juice-shop; docker stop zap || true
                             '''
         }
     }
 }
-}}
+}}}
 
