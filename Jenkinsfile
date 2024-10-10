@@ -20,10 +20,7 @@ pipeline {
                 bkimminich/juice-shop
             sleep 5
         '''
-        sh '''
-            docker kill juice-shop 
-        '''
-        sh '''
+                sh '''
             docker run --name zap --rm \\
             	--add-host=host.docker.internal:host-gateway \\
                 -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap:/zap/wrk/:rw \\
