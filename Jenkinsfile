@@ -34,7 +34,7 @@ pipeline {
         always {
         	script{
             sh '''
-                docker cp zap:/zap/wrk/zap_html_report.html ${pwd}/reports/zap_html_report.html
+                docker cp zap:/zap/wrk/zap_html_report.html /var/jenkins_home/workspace/ABCD PIPELINE@tmp/zap_html_report.html
                 docker stop juice-shop; docker stop zap || true
                             '''
         }
