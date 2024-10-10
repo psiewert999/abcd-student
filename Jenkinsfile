@@ -21,7 +21,7 @@ pipeline {
             sleep 5
         '''
         sh '''
-            docker stop zap juice-shop 
+            docker kill juice-shop 
         '''
         sh '''
             docker run --name zap --rm \\
