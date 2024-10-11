@@ -28,7 +28,7 @@ pipeline {
                 sleep 6
                 '''
                 sh '''
-                docker run --name zap --rm \\
+                docker run --name zap \\
             	--add-host=host.docker.internal:host-gateway \\
                 -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap:/zap/wrk/:rw \\
                 -t ghcr.io/zaproxy/zaproxy:stable \
@@ -40,9 +40,10 @@ pipeline {
     post {
         always {
             sh '''
-                docker cp zap:/zap/wrk/reports/zap_html_report.html ${WORKSPACE}/results/zap_html_report.html
-                docker cp zap:/zap/wrk/reports/zap_html_report.xml ${WORKSPACE}/results/zap_html_report.xml
-                docker stop juice-shop || true
+                docker cp zap:/zap/wrk/reports/zap_html_report.html ${pwd}/results/zap_html_report.html
+                docker cp zap:/zap/wrk/reports/zap_html_report.xml ${pwd}/results/zap_html_report.xml
+                docker stop juice-shop
+                docker rm zap
                 echo 'archiwizacja wynikow'
                 archiveArtifacts artifacs: 'results/**/*', fingerprint: true, allowEmptyArchive: true
                 echo 'Sending reports to DefectDojo'
