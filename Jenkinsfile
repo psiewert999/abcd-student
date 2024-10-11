@@ -17,7 +17,8 @@ pipeline {
                 sh '''
                 mkdir -p results/
                 '''
-                }
+            }
+        }
         stage('[ZAP] passive-scan') {
             steps {
                 sh '''
