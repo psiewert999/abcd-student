@@ -40,8 +40,8 @@ pipeline {
     post {
         always {
             sh '''
-                docker cp zap:/zap/wrk/reports/zap_html_report.html ${pwd}/results/zap_html_report.html
-                docker cp zap:/zap/wrk/reports/zap_html_report.xml ${pwd}/results/zap_html_report.xml
+                docker cp zap:/zap/wrk/reports/zap_html_report.html ${PWD}/results/zap_html_report.html
+                docker cp zap:/zap/wrk/reports/zap_html_report.xml ${PWD}/results/zap_html_report.xml
                 docker stop juice-shop
                 docker rm zap
                 echo 'archiwizacja wynikow'
