@@ -47,11 +47,7 @@ pipeline {
                 echo 'archiwizacja wynikow'
                 archiveArtifacts artifacs: 'results/**/*', fingerprint: true, allowEmptyArchive: true
                 echo 'Sending reports to DefectDojo'
-        	    defectDojoPublisher(
-			    artifact:'results/zap_xml_report.xml',
-			    productName: 'Juice Shop',
-			    scanType: 'ZAP Scan',
-			    engagementName: 'patryk.siewert@opi.org.pl')
+        	    
             '''
         }
     }
