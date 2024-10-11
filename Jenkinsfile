@@ -44,8 +44,6 @@ pipeline {
                 docker cp zap:/zap/wrk/reports/zap_html_report.xml ${WORKSPACE}/results/zap_html_report.xml
                 docker stop juice-shop || true
                '''
-        }
-        always {
             echo 'archiwizacja wynikow'
             archiveArtifacts artifacs: 'results/**/*', fingerprint: true, allowEmptyArchive: true
             echo 'Sending reports to DefectDojo'
