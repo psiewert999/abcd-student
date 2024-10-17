@@ -36,6 +36,7 @@ pipeline {
                 always {
                     sh '''
                         docker exec zap pwd
+                        docker exec zap ls
                         docker stop juice-shop
                         docker rm zap       	    
                     '''
