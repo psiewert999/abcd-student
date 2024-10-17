@@ -42,7 +42,7 @@ pipeline {
                     if (isZapRunning) { 
                         echo "Zap IS ALREADY RUNNING. Shutting down"
                         sh '''
-                        docker ps -a --filter "exited=0" -q | xargs docker rmd
+                        docker ps -a --filter "exited=0" -q | xargs docker rm
                         '''
                         echo "Old zap has deleted"
                     } else {
