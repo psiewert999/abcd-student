@@ -47,7 +47,7 @@ pipeline {
     post {
         always {
             echo 'archiwizacja wynikow'
-            archiveArtifacts artifacs: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
+            archiveArtifacts artifacts: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
             echo 'Sending reports to DefectDojo'
         }
     }
