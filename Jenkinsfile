@@ -25,7 +25,6 @@ pipeline {
                         echo "JUICE SHOP IS ALREADY RUNNING. Shutting down"
                         sh '''
                         docker stop juice-shop
-                        docker rm juice-shop 
                         sleep 6
                         docker run --name juice-shop -d --rm \
                         -p 3000:3000 \
@@ -44,7 +43,6 @@ pipeline {
                         echo "Zap IS ALREADY RUNNING. Shutting down"
                         sh '''
                         docker stop zap2
-                        docker rm zap2 
                         '''
                         echo "Old zap has deleted"
                     } else {
@@ -69,9 +67,7 @@ pipeline {
                         docker exec zap2 pwd
                         docker exec zap2 ls
                         docker stop juice-shop
-                        docker rm juice-shop
-                        docker stop zap2
-                        docker rm zap2       	    
+                        docker stop zap2                            	    
                     '''
                 }
             }
@@ -79,15 +75,12 @@ pipeline {
     }
     post {
         always {
+            sh'''
+            docker -ps
+            '''
             echo 'archiwizacja wynikow'
             archiveArtifacts artifacts: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
             echo 'Sending reports to DefectDojo'
-            sh '''
-               docker stop juice-shop
-               docker rm juice-shop
-               docker stop zap2
-               docker rm zap2       	    
-            '''
-        }
+            }
     }
 }
