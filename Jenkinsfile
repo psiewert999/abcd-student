@@ -18,7 +18,15 @@ pipeline {
                     sh 'mkdir -p wyniki'
                     def isJuiceShopRunning = sh(script: "docker ps --filter 'name=juice-shop' --filter 'status=running' -q", returnStdout: true).trim()
                     if (isJuiceShopRunning) { 
-                        echo "JUICE SHOP IS ALREADY RUNNING"
+                        echo "JUICE SHOP IS ALREADY RUNNING. Shutting down"
+                        sh '''
+                        docker kill juice-shop 
+                        sleep 6
+                        docker run --name juice-shop -d --rm \
+                        -p 3000:3000 \
+                        bkimminich/juice-shop
+                        '''
+                        echo "New conatainer just started"
                     } else {
                         echo "JUICE SHOP is not running. Starting container"
                         sh '''
