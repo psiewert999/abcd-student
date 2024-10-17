@@ -78,6 +78,10 @@ pipeline {
             echo 'archiwizacja wynikow'
             archiveArtifacts artifacts: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
             echo 'Sending reports to DefectDojo'
+            sh '''
+               docker rm juice-shop
+               docker rm zap2       	    
+            '''
         }
     }
 }
