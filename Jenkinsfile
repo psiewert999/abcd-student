@@ -14,9 +14,7 @@ pipeline {
         }
         stage('Getting ready') {
             steps {
-                sh '''
-                mkdir -p results
-                '''
+                sh 'mkdir -p wyniki'
             }
         }
         stage('[ZAP] passive-scan') {
@@ -29,27 +27,29 @@ pipeline {
                 '''
                 sh '''
                 docker run --name zap \
-            	--add-host=host.docker.internal:host-gateway \
-                -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap:/zap/wrk/:rw \
+            	-v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap:/zap/wrk/:rw \
                 -t ghcr.io/zaproxy/zaproxy:stable \
                 bash -c "zap.sh -cmd -addonupdate; zap.sh -cmd -addoninstall communityScripts -addoninstall pscanrulesAlpha -addoninstall pscanrulesBeta -autorun /zap/wrk/passive.yaml" \
                 || true
-        '''
+                '''
+            }
+            post {
+                always {
+                    sh '''
+                    docker cp zap:/zap/wrk/reports/zap_html_report.html ${PWD}/wyniki/zap_html_report.html
+                    docker cp zap:/zap/wrk/reports/zap_html_report.xml ${PWD}/wyniki/zap_html_report.xml
+                    docker stop juice-shop
+                    docker rm zap       	    
+                    '''
+                }
+            }
+        }
     }
     post {
         always {
-            sh '''
-                docker cp zap:/zap/wrk/reports/zap_html_report.html ${PWD}/results/zap_html_report.html
-                docker cp zap:/zap/wrk/reports/zap_html_report.xml ${PWD}/results/zap_html_report.xml
-                docker stop juice-shop
-                docker rm zap
-                echo 'archiwizacja wynikow'
-                archiveArtifacts artifacs: 'results/**/*', fingerprint: true, allowEmptyArchive: true
-                echo 'Sending reports to DefectDojo'
-        	    
-            '''
+            echo 'archiwizacja wynikow'
+            archiveArtifacts artifacs: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
+            echo 'Sending reports to DefectDojo'
         }
     }
 }
-}}
-
