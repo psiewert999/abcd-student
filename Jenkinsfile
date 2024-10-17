@@ -61,7 +61,12 @@ pipeline {
             }
             post {
                 always {
-                    sh(script:"docker exec zap2 pwd")
+                    sh '''
+                    docker cp zap2:/zap/wrk/reports/zap_html_report.html ${WORKSPACE}/wyniki/zap_html_report.html
+                    docker cp zap2:/zap/wrk/reports/zap_xml_report.xml ${WORKSPACE}/wyniki/zap_xml_report.xml
+                    docker stop zap2 juice-shop
+                    docker rm zap2
+                    '''
                 }
             }
         }
