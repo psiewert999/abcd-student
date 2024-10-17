@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<OWASPZAPReport programName="ZAP" version="2.15.0" generated="Thu, 17 Oct 2024 10:52:35">
+<OWASPZAPReport programName="ZAP" version="2.15.0" generated="Thu, 17 Oct 2024 11:11:56">
 	
 		<site name="http://host.docker.internal:3000" host="host.docker.internal" port="3000" ssl="false">
 			<alerts>
@@ -97,7 +97,27 @@
 							
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:286:9</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:328:13</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:376:14</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -115,8 +135,18 @@
 									<otherinfo></otherinfo>
 								</instance>
 							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/sitemap.xml</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
 						</instances>
-						<count>10</count>
+						<count>13</count>
 						<solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.&lt;/p&gt;</solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&lt;/p&gt;&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html&lt;/p&gt;&lt;p&gt;https://www.w3.org/TR/CSP/&lt;/p&gt;&lt;p&gt;https://w3c.github.io/webappsec-csp/&lt;/p&gt;&lt;p&gt;https://web.dev/articles/csp&lt;/p&gt;&lt;p&gt;https://caniuse.com/#feat=contentsecuritypolicy&lt;/p&gt;&lt;p&gt;https://content-security-policy.com/&lt;/p&gt;</reference>
@@ -149,6 +179,16 @@
 							
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>Access-Control-Allow-Origin: *</evidence>
+									<otherinfo>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/ftp</uri>
 									<method>GET</method>
 									<param></param>
@@ -159,7 +199,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp/eastere.gg</uri>
+									<uri>http://host.docker.internal:3000/ftp/acquisitions.md</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -169,7 +209,17 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp/incident-support.kdbx</uri>
+									<uri>http://host.docker.internal:3000/ftp/coupons_2013.md.bak</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>Access-Control-Allow-Origin: *</evidence>
+									<otherinfo>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/ftp/eastere.gg</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -248,7 +298,7 @@
 								</instance>
 							
 						</instances>
-						<count>11</count>
+						<count>13</count>
 						<solution>&lt;p&gt;Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).&lt;/p&gt;&lt;p&gt;Configure the &quot;Access-Control-Allow-Origin&quot; HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.&lt;/p&gt;</solution>
 						<otherinfo>&lt;p&gt;The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.&lt;/p&gt;</otherinfo>
 						<reference>&lt;p&gt;https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy&lt;/p&gt;</reference>
@@ -291,26 +341,6 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:39:13</uri>
-									<method>GET</method>
-									<param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
-									<attack></attack>
-									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
-									<otherinfo></otherinfo>
-								</instance>
-							
-							
-								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:39:13</uri>
-									<method>GET</method>
-									<param>//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js</param>
-									<attack></attack>
-									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js&quot;&gt;&lt;/script&gt;</evidence>
-									<otherinfo></otherinfo>
-								</instance>
-							
-							
-								<instance>
 									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:55:18</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
@@ -331,7 +361,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:286:9</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:328:13</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
 									<attack></attack>
@@ -341,7 +371,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:286:9</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:328:13</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js</param>
 									<attack></attack>
@@ -351,7 +381,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:328:13</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:376:14</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
 									<attack></attack>
@@ -361,7 +391,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:328:13</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:376:14</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js</param>
 									<attack></attack>
@@ -410,7 +440,7 @@
 								</instance>
 							
 						</instances>
-						<count>14</count>
+						<count>12</count>
 						<solution>&lt;p&gt;Ensure JavaScript source files are loaded from only trusted sources, and the sources can&apos;t be controlled by end users of the application.&lt;/p&gt;</solution>
 						<otherinfo></otherinfo>
 						<reference></reference>
@@ -525,7 +555,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp/package.json.bak</uri>
+									<uri>http://host.docker.internal:3000/ftp/suspicious_errors.yml</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -590,7 +620,7 @@
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy&lt;/p&gt;&lt;p&gt;https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/&lt;/p&gt;</reference>
 						<cweid>16</cweid>
 						<wascid>15</wascid>
-						<sourceid>8</sourceid>
+						<sourceid>1</sourceid>
 					</alertitem>
 				
 				
@@ -662,7 +692,7 @@
 						<reference>&lt;p&gt;https://owasp.org/www-community/attacks/Full_Path_Disclosure&lt;/p&gt;</reference>
 						<cweid>209</cweid>
 						<wascid>13</wascid>
-						<sourceid>33</sourceid>
+						<sourceid>35</sourceid>
 					</alertitem>
 				
 				
@@ -856,37 +886,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/build/routes/assets/public/favicon_js.ico</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
-									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
-								</instance>
-							
-							
-								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:39:13</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
-									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
-								</instance>
-							
-							
-								<instance>
 									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:55:18</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
-									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
-								</instance>
-							
-							
-								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/build/routes/polyfills.js</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -936,7 +936,37 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:376:14</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/styles.css</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/vendor.js</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -988,6 +1018,16 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<instances>
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/</uri>
+									<method>GET</method>
+									<param>Sec-Fetch-Dest</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Dest</param>
@@ -1016,14 +1056,24 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 									<otherinfo></otherinfo>
 								</instance>
 							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/sitemap.xml</uri>
+									<method>GET</method>
+									<param>Sec-Fetch-Dest</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
 						</instances>
-						<count>3</count>
+						<count>5</count>
 						<solution>&lt;p&gt;Ensure that Sec-Fetch-Dest header is included in request headers.&lt;/p&gt;</solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest&lt;/p&gt;</reference>
 						<cweid>352</cweid>
 						<wascid>9</wascid>
-						<sourceid>14</sourceid>
+						<sourceid>8</sourceid>
 					</alertitem>
 				
 				
@@ -1040,6 +1090,16 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<instances>
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/</uri>
+									<method>GET</method>
+									<param>Sec-Fetch-Mode</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Mode</param>
@@ -1068,14 +1128,24 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 									<otherinfo></otherinfo>
 								</instance>
 							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/sitemap.xml</uri>
+									<method>GET</method>
+									<param>Sec-Fetch-Mode</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
 						</instances>
-						<count>3</count>
+						<count>5</count>
 						<solution>&lt;p&gt;Ensure that Sec-Fetch-Mode header is included in request headers.&lt;/p&gt;</solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode&lt;/p&gt;</reference>
 						<cweid>352</cweid>
 						<wascid>9</wascid>
-						<sourceid>14</sourceid>
+						<sourceid>8</sourceid>
 					</alertitem>
 				
 				
@@ -1092,6 +1162,16 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<instances>
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/</uri>
+									<method>GET</method>
+									<param>Sec-Fetch-Site</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Site</param>
@@ -1120,14 +1200,24 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 									<otherinfo></otherinfo>
 								</instance>
 							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/sitemap.xml</uri>
+									<method>GET</method>
+									<param>Sec-Fetch-Site</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
 						</instances>
-						<count>3</count>
+						<count>5</count>
 						<solution>&lt;p&gt;Ensure that Sec-Fetch-Site header is included in request headers.&lt;/p&gt;</solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site&lt;/p&gt;</reference>
 						<cweid>352</cweid>
 						<wascid>9</wascid>
-						<sourceid>14</sourceid>
+						<sourceid>8</sourceid>
 					</alertitem>
 				
 				
@@ -1144,6 +1234,16 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<instances>
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/</uri>
+									<method>GET</method>
+									<param>Sec-Fetch-User</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-User</param>
@@ -1172,14 +1272,24 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 									<otherinfo></otherinfo>
 								</instance>
 							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/sitemap.xml</uri>
+									<method>GET</method>
+									<param>Sec-Fetch-User</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
 						</instances>
-						<count>3</count>
+						<count>5</count>
 						<solution>&lt;p&gt;Ensure that Sec-Fetch-User header is included in user initiated requests.&lt;/p&gt;</solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User&lt;/p&gt;</reference>
 						<cweid>352</cweid>
 						<wascid>9</wascid>
-						<sourceid>14</sourceid>
+						<sourceid>8</sourceid>
 					</alertitem>
 				
 				
@@ -1268,16 +1378,6 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp/incident-support.kdbx</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>max-age=0</evidence>
-									<otherinfo></otherinfo>
-								</instance>
-							
-							
-								<instance>
 									<uri>http://host.docker.internal:3000/main.js</uri>
 									<method>GET</method>
 									<param></param>
@@ -1337,13 +1437,13 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 								</instance>
 							
 						</instances>
-						<count>10</count>
+						<count>9</count>
 						<solution></solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
 						<cweid>524</cweid>
 						<wascid>13</wascid>
-						<sourceid>8</sourceid>
+						<sourceid>1</sourceid>
 					</alertitem>
 				
 			</alerts>
