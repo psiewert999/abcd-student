@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<OWASPZAPReport programName="ZAP" version="2.15.0" generated="Thu, 17 Oct 2024 06:06:48">
+<OWASPZAPReport programName="ZAP" version="2.15.0" generated="Thu, 17 Oct 2024 07:14:36">
 	
 		<site name="http://host.docker.internal:3000" host="host.docker.internal" port="3000" ssl="false">
 			<alerts>
@@ -87,7 +87,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:280:10</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:39:13</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -107,7 +107,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:421:3</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -179,7 +179,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp/eastere.gg</uri>
+									<uri>http://host.docker.internal:3000/ftp/coupons_2013.md.bak</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -189,7 +189,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp/incident-support.kdbx</uri>
+									<uri>http://host.docker.internal:3000/ftp/legal.md</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -210,6 +210,16 @@
 							
 								<instance>
 									<uri>http://host.docker.internal:3000/polyfills.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>Access-Control-Allow-Origin: *</evidence>
+									<otherinfo>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://host.docker.internal:3000/robots.txt</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -258,13 +268,13 @@
 								</instance>
 							
 						</instances>
-						<count>11</count>
+						<count>12</count>
 						<solution>&lt;p&gt;Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).&lt;/p&gt;&lt;p&gt;Configure the &quot;Access-Control-Allow-Origin&quot; HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.&lt;/p&gt;</solution>
 						<otherinfo>&lt;p&gt;The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.&lt;/p&gt;</otherinfo>
 						<reference>&lt;p&gt;https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy&lt;/p&gt;</reference>
 						<cweid>264</cweid>
 						<wascid>14</wascid>
-						<sourceid>1</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 				
@@ -301,7 +311,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:280:10</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:39:13</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
 									<attack></attack>
@@ -311,7 +321,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:280:10</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:39:13</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js</param>
 									<attack></attack>
@@ -341,7 +351,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:421:3</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js</param>
 									<attack></attack>
@@ -351,7 +361,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:421:3</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5</uri>
 									<method>GET</method>
 									<param>//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js</param>
 									<attack></attack>
@@ -386,7 +396,7 @@
 						<reference></reference>
 						<cweid>829</cweid>
 						<wascid>15</wascid>
-						<sourceid>1</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 				
@@ -428,7 +438,7 @@
 						<reference>&lt;p&gt;https://angular.io/guide/security&lt;/p&gt;</reference>
 						<cweid>749</cweid>
 						<wascid>-1</wascid>
-						<sourceid>22</sourceid>
+						<sourceid>23</sourceid>
 					</alertitem>
 				
 				
@@ -495,27 +505,7 @@
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp/package.json.bak</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>Feature-Policy</evidence>
-									<otherinfo></otherinfo>
-								</instance>
-							
-							
-								<instance>
 									<uri>http://host.docker.internal:3000/ftp/suspicious_errors.yml</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>Feature-Policy</evidence>
-									<otherinfo></otherinfo>
-								</instance>
-							
-							
-								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:280:10</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -574,13 +564,13 @@
 								</instance>
 							
 						</instances>
-						<count>13</count>
+						<count>11</count>
 						<solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header instead of the Feature-Policy header.&lt;/p&gt;</solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy&lt;/p&gt;&lt;p&gt;https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/&lt;/p&gt;</reference>
 						<cweid>16</cweid>
 						<wascid>15</wascid>
-						<sourceid>1</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 				
@@ -652,7 +642,7 @@
 						<reference>&lt;p&gt;https://owasp.org/www-community/attacks/Full_Path_Disclosure&lt;/p&gt;</reference>
 						<cweid>209</cweid>
 						<wascid>13</wascid>
-						<sourceid>37</sourceid>
+						<sourceid>33</sourceid>
 					</alertitem>
 				
 				
@@ -684,7 +674,7 @@
 						<reference>&lt;p&gt;https://cwe.mitre.org/data/definitions/200.html&lt;/p&gt;</reference>
 						<cweid>200</cweid>
 						<wascid>13</wascid>
-						<sourceid>22</sourceid>
+						<sourceid>23</sourceid>
 					</alertitem>
 				
 				
@@ -819,7 +809,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<reference></reference>
 						<cweid>200</cweid>
 						<wascid>13</wascid>
-						<sourceid>22</sourceid>
+						<sourceid>23</sourceid>
 					</alertitem>
 				
 				
@@ -846,6 +836,16 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:39:13</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/juice-shop/build/routes/fileServer.js:55:18</uri>
 									<method>GET</method>
 									<param></param>
@@ -856,17 +856,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/assets/public/favicon_js.ico</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
-									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
-								</instance>
-							
-							
-								<instance>
-									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/index.js:280:10</uri>
+									<uri>http://host.docker.internal:3000/juice-shop/build/routes/polyfills.js</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -926,6 +916,16 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
+									<uri>http://host.docker.internal:3000/juice-shop/node_modules/express/lib/router/layer.js:95:5</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo>No links have been found while there are scripts, which is an indication that this is a modern web application.</otherinfo>
+								</instance>
+							
+							
+								<instance>
 									<uri>http://host.docker.internal:3000/juice-shop/node_modules/serve-index/index.js:145:39</uri>
 									<method>GET</method>
 									<param></param>
@@ -945,13 +945,13 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 								</instance>
 							
 						</instances>
-						<count>11</count>
+						<count>12</count>
 						<solution>&lt;p&gt;This is an informational alert and so no changes are required.&lt;/p&gt;</solution>
 						<otherinfo>&lt;p&gt;No links have been found while there are scripts, which is an indication that this is a modern web application.&lt;/p&gt;</otherinfo>
 						<reference></reference>
 						<cweid>-1</cweid>
 						<wascid>-1</wascid>
-						<sourceid>6</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 				
@@ -976,24 +976,14 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 									<otherinfo></otherinfo>
 								</instance>
 							
-							
-								<instance>
-									<uri>http://host.docker.internal:3000/ftp/eastere.gg</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>403</evidence>
-									<otherinfo></otherinfo>
-								</instance>
-							
 						</instances>
-						<count>2</count>
+						<count>1</count>
 						<solution>&lt;p&gt;The content may be marked as storable by ensuring that the following conditions are satisfied:&lt;/p&gt;&lt;p&gt;The request method must be understood by the cache and defined as being cacheable (&quot;GET&quot;, &quot;HEAD&quot;, and &quot;POST&quot; are currently defined as cacheable)&lt;/p&gt;&lt;p&gt;The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)&lt;/p&gt;&lt;p&gt;The &quot;no-store&quot; cache directive must not appear in the request or response header fields&lt;/p&gt;&lt;p&gt;For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;private&quot; response directive must not appear in the response&lt;/p&gt;&lt;p&gt;For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;Authorization&quot; header field must not appear in the request, unless the response explicitly allows it (using one of the &quot;must-revalidate&quot;, &quot;public&quot;, or &quot;s-maxage&quot; Cache-Control response directives)&lt;/p&gt;&lt;p&gt;In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:&lt;/p&gt;&lt;p&gt;It must contain an &quot;Expires&quot; header field&lt;/p&gt;&lt;p&gt;It must contain a &quot;max-age&quot; response directive&lt;/p&gt;&lt;p&gt;For &quot;shared&quot; caches such as &quot;proxy&quot; caches, it must contain a &quot;s-maxage&quot; response directive&lt;/p&gt;&lt;p&gt;It must contain a &quot;Cache Control Extension&quot; that allows it to be cached&lt;/p&gt;&lt;p&gt;It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).&lt;/p&gt;</solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
 						<cweid>524</cweid>
 						<wascid>13</wascid>
-						<sourceid>37</sourceid>
+						<sourceid>33</sourceid>
 					</alertitem>
 				
 				
@@ -1020,7 +1010,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
+									<uri>http://host.docker.internal:3000/robots.txt</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Dest</param>
 									<attack></attack>
@@ -1030,7 +1020,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/robots.txt</uri>
+									<uri>http://host.docker.internal:3000/runtime.js</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Dest</param>
 									<attack></attack>
@@ -1055,7 +1045,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest&lt;/p&gt;</reference>
 						<cweid>352</cweid>
 						<wascid>9</wascid>
-						<sourceid>1</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 				
@@ -1082,7 +1072,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
+									<uri>http://host.docker.internal:3000/robots.txt</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Mode</param>
 									<attack></attack>
@@ -1092,7 +1082,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/robots.txt</uri>
+									<uri>http://host.docker.internal:3000/runtime.js</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Mode</param>
 									<attack></attack>
@@ -1117,7 +1107,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode&lt;/p&gt;</reference>
 						<cweid>352</cweid>
 						<wascid>9</wascid>
-						<sourceid>1</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 				
@@ -1144,7 +1134,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
+									<uri>http://host.docker.internal:3000/robots.txt</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Site</param>
 									<attack></attack>
@@ -1154,7 +1144,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/robots.txt</uri>
+									<uri>http://host.docker.internal:3000/runtime.js</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-Site</param>
 									<attack></attack>
@@ -1179,7 +1169,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site&lt;/p&gt;</reference>
 						<cweid>352</cweid>
 						<wascid>9</wascid>
-						<sourceid>1</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 				
@@ -1206,7 +1196,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/assets/public/favicon_js.ico</uri>
+									<uri>http://host.docker.internal:3000/robots.txt</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-User</param>
 									<attack></attack>
@@ -1216,7 +1206,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/robots.txt</uri>
+									<uri>http://host.docker.internal:3000/runtime.js</uri>
 									<method>GET</method>
 									<param>Sec-Fetch-User</param>
 									<attack></attack>
@@ -1241,7 +1231,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User&lt;/p&gt;</reference>
 						<cweid>352</cweid>
 						<wascid>9</wascid>
-						<sourceid>1</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 				
@@ -1258,16 +1248,6 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 						<instances>
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence></evidence>
-									<otherinfo>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</otherinfo>
-								</instance>
-							
-							
-								<instance>
 									<uri>http://host.docker.internal:3000/robots.txt</uri>
 									<method>GET</method>
 									<param></param>
@@ -1277,13 +1257,13 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 								</instance>
 							
 						</instances>
-						<count>2</count>
+						<count>1</count>
 						<solution>&lt;p&gt;Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:&lt;/p&gt;&lt;p&gt;Cache-Control: no-cache, no-store, must-revalidate, private&lt;/p&gt;&lt;p&gt;Pragma: no-cache&lt;/p&gt;&lt;p&gt;Expires: 0&lt;/p&gt;&lt;p&gt;This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.&lt;/p&gt;</solution>
 						<otherinfo>&lt;p&gt;In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.&lt;/p&gt;</otherinfo>
 						<reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
 						<cweid>524</cweid>
 						<wascid>13</wascid>
-						<sourceid>24</sourceid>
+						<sourceid>6</sourceid>
 					</alertitem>
 				
 				
@@ -1320,17 +1300,7 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 							
 							
 								<instance>
-									<uri>http://host.docker.internal:3000/ftp/acquisitions.md</uri>
-									<method>GET</method>
-									<param></param>
-									<attack></attack>
-									<evidence>max-age=0</evidence>
-									<otherinfo></otherinfo>
-								</instance>
-							
-							
-								<instance>
-									<uri>http://host.docker.internal:3000/ftp/incident-support.kdbx</uri>
+									<uri>http://host.docker.internal:3000/ftp/legal.md</uri>
 									<method>GET</method>
 									<param></param>
 									<attack></attack>
@@ -1399,13 +1369,13 @@ C&quot;&#xfffd;&#xfffd;&apos;&#xfffd;i&#x1ed;IEND&#xfffd;B`&#xfffd;</otherinfo>
 								</instance>
 							
 						</instances>
-						<count>10</count>
+						<count>9</count>
 						<solution></solution>
 						<otherinfo></otherinfo>
 						<reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
 						<cweid>524</cweid>
 						<wascid>13</wascid>
-						<sourceid>1</sourceid>
+						<sourceid>9</sourceid>
 					</alertitem>
 				
 			</alerts>
