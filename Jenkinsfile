@@ -76,7 +76,7 @@ pipeline {
     post {
         always {
             sh'''
-            docker -ps
+            docker ps
             '''
             echo 'archiwizacja wynikow'
             archiveArtifacts artifacts: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
