@@ -21,7 +21,7 @@ pipeline {
                     sh '''
                     docker ps -a
                     '''
-                    if (isJuiceShopRunning) { 
+                    if (!isJuiceShopRunning) { 
                         echo "JUICE SHOP IS ALREADY RUNNING. Shutting down"
                         sh '''
                         docker stop juice-shop
@@ -39,7 +39,7 @@ pipeline {
                         bkimminich/juice-shop
                         '''
                     }
-                    if (isZapRunning) { 
+                    if (!isZapRunning) { 
                         echo "Zap IS ALREADY RUNNING. Shutting down"
                         sh "docker rm zap2" 
                         echo "Old zap has deleted"
