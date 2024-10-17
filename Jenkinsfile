@@ -61,10 +61,10 @@ pipeline {
             post {
                 always {
                     sh '''
-                        docker exec zap pwd
-                        docker exec zap ls
+                        docker exec zap2 pwd
+                        docker exec zap2 ls
                         docker stop juice-shop
-                        docker rm zap       	    
+                        docker rm zap2       	    
                     '''
                 }
             }
