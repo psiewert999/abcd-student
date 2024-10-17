@@ -29,17 +29,16 @@ pipeline {
                 docker run --name zap \
             	-v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap:/zap/wrk/:rw \
                 -t ghcr.io/zaproxy/zaproxy:stable \
-                bash -c "zap.sh -cmd -addonupdate; zap.sh -cmd -addoninstall communityScripts -addoninstall pscanrulesAlpha -addoninstall pscanrulesBeta -autorun /zap/wrk/passive.yaml" \
-                || true
+                bash -c "zap.sh -cmd -addonupdate; zap.sh -cmd -addoninstall communityScripts -addoninstall pscanrulesAlpha -addoninstall pscanrulesBeta -autorun /zap/wrk/passive.yaml" || true
                 '''
             }
             post {
                 always {
                     sh '''
-                    docker cp zap:/zap/wrk/reports/zap_html_report.html ${PWD}/wyniki/zap_html_report.html
-                    docker cp zap:/zap/wrk/reports/zap_html_report.xml ${PWD}/wyniki/zap_html_report.xml
-                    docker stop juice-shop
-                    docker rm zap       	    
+                        docker cp zap:/zap/wrk/reports/zap_html_report.html ${PWD}/wyniki/zap_html_report.html
+                        docker cp zap:/zap/wrk/reports/zap_xml_report.xml ${PWD}/wyniki/zap_html_report.xml
+                        docker stop juice-shop
+                        docker rm zap       	    
                     '''
                 }
             }
