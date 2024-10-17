@@ -24,7 +24,7 @@ pipeline {
                     if (isJuiceShopRunning) { 
                         echo "JUICE SHOP IS ALREADY RUNNING. Shutting down"
                         sh '''
-                        docker kill juice-shop 
+                        docker rm juice-shop 
                         sleep 6
                         docker run --name juice-shop -d --rm \
                         -p 3000:3000 \
