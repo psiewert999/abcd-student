@@ -17,22 +17,7 @@ pipeline {
                 script {
                     sh 'mkdir -p wyniki'
                     sh 'docker start juice-shop || docker run --name juice-shop -d --rm -p 172.17.0.1:3000:3000 -p 127.0.0.1:3000:3000 bkimminich/juice-shop'
-				timeout(5) {
- 		   			waitUntil {
-       					script {
-							try {
-                				def response = httpRequest 'http://172.17.0.1:3000'
-                				return (response.status == 200)
-            				}
-            				catch (exception) {
-                 				return false
-            				}
-         					//def r = sh script: 'wget -q http://172.17.0.1:3000 -O /dev/null', returnStdout: true
-         					//return (r == 0);
-       					}
-    				}
-				}
-                }
+				    }
             }
         }
         stage('[ZAP] passive-scan') {
