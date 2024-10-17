@@ -15,9 +15,9 @@ pipeline {
         stage('Getting ready') {
             steps {
                 script {
-                                        sh 'mkdir -p wyniki'
+                    sh 'mkdir -p wyniki'
                     def isJuiceShopRunning = sh(script: "docker ps -a --filter 'name=juice-shop' --filter 'status=running' -q", returnStdout: true).trim()
-                    def isZapRunning = sh(script: "docker ps -a --filter 'name=zap'|grep zap", returnStdout: true).trim()
+                    def isZapRunning = sh(script: "docker ps -a --filter 'name=zap'||grep zap", returnStdout: true).trim()
                     sh '''
                     docker ps -a
                     '''
