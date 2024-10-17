@@ -61,12 +61,7 @@ pipeline {
             }
             post {
                 always {
-                    sh '''
-                        docker exec zap2 pwd
-                        docker exec zap2 ls
-                        docker stop juice-shop
-                        docker stop zap2                            	    
-                    '''
+                    sh(script:"docker exec zap pwd")
                 }
             }
         }
@@ -74,7 +69,7 @@ pipeline {
     post {
         always {
             sh'''
-            docker ps
+            docker ps -a
             '''
             echo 'archiwizacja wynikow'
             archiveArtifacts artifacts: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
