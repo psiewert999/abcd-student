@@ -52,7 +52,7 @@ pipeline {
         stage('[ZAP] passive-scan') {
             steps {
                 sh '''
-                    docker run --name zap2 \
+                    docker run --name zap2 -d\
                     --add-host=host.docker.internal:host-gateway \
                     -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/.zap:/zap/wrk/:rw \
                     -t ghcr.io/zaproxy/zaproxy:stable \
