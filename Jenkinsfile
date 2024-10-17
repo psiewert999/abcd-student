@@ -61,16 +61,13 @@ pipeline {
             }
             post {
                 always {
-                    sh(script:"docker exec zap pwd")
+                    sh(script:"docker exec zap2 pwd")
                 }
             }
         }
     }
     post {
         always {
-            sh'''
-            docker ps -a
-            '''
             echo 'archiwizacja wynikow'
             archiveArtifacts artifacts: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
             echo 'Sending reports to DefectDojo'
