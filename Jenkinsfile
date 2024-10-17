@@ -18,10 +18,7 @@ pipeline {
                     sh 'mkdir -p wyniki'
                     def isJuiceShopRunning = sh script: "docker ps -a --filter 'name=juice-shop' --filter 'status=running' -q | grep juice-shop", returnStdout: true
                     def isZapRunning = sh script: "docker ps -a --filter 'name=zap2'| grep zap", returnStdout: true
-                    sh '''
-                    docker ps -a
-                    '''
-                    if (!isJuiceShopRunning) { 
+                    if (isJuiceShopRunning) { 
                         echo "JUICE SHOP IS ALREADY RUNNING. Shutting down"
                         sh '''
                         docker stop juice-shop
@@ -39,13 +36,16 @@ pipeline {
                         bkimminich/juice-shop
                         '''
                     }
-                    if (!isZapRunning) { 
+                    if (isZapRunning) { 
                         echo "Zap IS ALREADY RUNNING. Shutting down"
                         sh "docker rm zap2" 
                         echo "Old zap has deleted"
                     } else {
                         echo "ZAP is not running."
                         }
+                    sh '''
+                    docker ps -a
+                    '''
                 }
             }
         }
