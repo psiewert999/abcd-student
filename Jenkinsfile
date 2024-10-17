@@ -41,9 +41,7 @@ pipeline {
                     }
                     if (isZapRunning) { 
                         echo "Zap IS ALREADY RUNNING. Shutting down"
-                        sh '''
-                        docker rm ${isZapRunning}
-                        '''
+                        sh "docker rm ${isZapRunning}"
                         echo "Old zap has deleted"
                     } else {
                         echo "ZAP is not running."
