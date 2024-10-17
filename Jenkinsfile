@@ -18,6 +18,9 @@ pipeline {
                                         sh 'mkdir -p wyniki'
                     def isJuiceShopRunning = sh(script: "docker ps --filter 'name=juice-shop' --filter 'status=running' -q", returnStdout: true).trim()
                     def isZapRunning = sh(script: "docker ps --filter 'name=zap2' --filter 'status=running' -q", returnStdout: true).trim()
+                    sh '''
+                    docker ps
+                    '''
                     if (isJuiceShopRunning) { 
                         echo "JUICE SHOP IS ALREADY RUNNING. Shutting down"
                         sh '''
