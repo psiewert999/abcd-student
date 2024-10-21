@@ -20,6 +20,38 @@ pipeline {
 				    }
             }
         }
+        stage('[SCA] supply-chain') {
+            steps {
+                sh '''
+                    docker run -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/:/app \
+                    -t osv-scanner scan /app/package-lock.json \
+                    -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/reports:/app:rw \
+                    --format table \
+                    --output /reports/osv-scan_report.json -t osv-scanner || true
+                '''
+                sh '''
+
+                    docker run -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/:/app \
+                    -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/reports:/app:rw \
+                    -t osv-scanner scan /app/package-lock.json \
+                    --format table \ 
+                    --output /reports/osv-scan_report.txt -t osv-scanner || true
+                
+                    '''
+            }
+            post {
+                
+                always {
+2
+                sh '''
+                
+                docker cp osv-scanner:/app/osv-report.json ${WORKSPACE}/reports/osv-report.json
+                docker cp osv-scanner:/app/osv-report.txt ${WORKSPACE}/reports/osv-report.txt
+                docker rm /app/osv-scanner
+
+                '''
+                }
+            }
         stage('[ZAP] passive-scan') {
             steps {
                 sh '''
