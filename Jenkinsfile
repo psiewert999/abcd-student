@@ -51,7 +51,7 @@ pipeline {
                     -t osv-scanner \
                     --lockfile /app/package-lock.json \
                     --format json \
-                    --output /app/osv-scan_report.json || true
+                    --output /reports/osv-scan_report.json || true
                 '''
                 sh '''
 
@@ -60,7 +60,7 @@ pipeline {
                     -t osv-scanner \
                     --lockfile /app/package-lock.json \
                     --format table \
-                    --output /app/osv-scan_report.txt || true
+                    --output /reports/osv-scan_report.txt || true
                 
                     '''
             }
