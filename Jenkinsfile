@@ -55,7 +55,7 @@ pipeline {
                 sh '''
 
                     docker run --name osv-txt -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/:/app:rw \
-                    -t osv-scanner scan \
+                    -t osv-scanner \
                     --lockfile /app/package-lock.json \
                     --format table \
                     --output /app/osv-scan_report.txt || true
