@@ -69,7 +69,7 @@ pipeline {
                 
                 docker cp osv-scanner:/app/osv-report.json ${WORKSPACE}/wyniki/osv-report.json
                 docker cp osv-scanner:/app/osv-report.txt ${WORKSPACE}/wyniki/osv-report.txt
-                docker rm /app/osv-scanner
+                docker rm osv-txt osv-json
 
                 '''
                 }
