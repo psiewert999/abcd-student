@@ -80,4 +80,4 @@ pipeline {
             defectDojoPublisher(artifact: 'wyniki/zap_xml_report.xml', productName: 'Juice Shop', scanType: 'ZAP Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             }
     }
-}
+}}
