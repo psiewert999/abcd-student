@@ -47,13 +47,15 @@ pipeline {
             steps {
                 sh '''
                     docker run -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/:/app:rw \
-                    -t osv-scanner scan /app/package-lock.json \
+                    -t osv-scanner \
+                    --lockfile /app/package-lock.json \
                     --format json --output /app/osv-scan_report.json -t osv-scanner || true
                 '''
                 sh '''
 
                     docker run -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/:/app:rw \
-                    -t osv-scanner scan /app/package-lock.json \
+                    -t osv-scanner scan \
+                    --lockfile /app/package-lock.json \
                     --format table --output /app/osv-scan_report.txt -t osv-scanner || true
                 
                     '''
