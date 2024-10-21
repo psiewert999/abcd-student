@@ -40,7 +40,6 @@ pipeline {
             post {
                 
                 always {
-2
                 sh '''
                 
                 docker cp osv-scanner:/app/osv-report.json ${WORKSPACE}/reports/osv-report.json
