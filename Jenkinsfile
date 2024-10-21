@@ -26,8 +26,7 @@ pipeline {
                     docker run -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/:/app \
                     -t osv-scanner scan /app/package-lock.json \
                     -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/reports:/app:rw \
-                    --format table \
-                    --output /reports/osv-scan_report.json -t osv-scanner || true
+                    --format table --output /reports/osv-scan_report.json -t osv-scanner || true
                 '''
                 sh '''
 
