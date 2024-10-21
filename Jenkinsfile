@@ -67,8 +67,8 @@ pipeline {
                 always {
                 sh '''
                 
-                docker cp osv-scanner:/app/osv-report.json ${WORKSPACE}/wyniki/osv-report.json
-                docker cp osv-scanner:/app/osv-report.txt ${WORKSPACE}/wyniki/osv-report.txt
+                docker cp osv-json:/app/osv-report.json ${WORKSPACE}/wyniki/osv-report.json
+                docker cp osv-txt:/app/osv-report.txt ${WORKSPACE}/wyniki/osv-report.txt
                 docker rm osv-txt osv-json
 
                 '''
