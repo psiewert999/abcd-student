@@ -63,3 +63,5 @@ config/*.yml
 
 # System Files
 .DS_Store
+osv-scan_report.json
+osv-scan_report.txt
