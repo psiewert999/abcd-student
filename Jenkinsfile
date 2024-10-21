@@ -46,7 +46,8 @@ pipeline {
         stage('[SCA] supply-chain') {
             steps {
                 sh '''
-                    docker run --name osv-json -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/:/app:rw \
+                    docker run --name osv-json -v /home/psiewert/KURS_ABC_DEVSECOPS/reports/:/reports \
+                    -v /home/psiewert/KURS_ABC_DEVSECOPS/reports:/reports:rw
                     -t osv-scanner \
                     --lockfile /app/package-lock.json \
                     --format json \
@@ -54,7 +55,7 @@ pipeline {
                 '''
                 sh '''
 
-                    docker run --name osv-txt -v /home/psiewert/KURS_ABC_DEVSECOPS/abcd-student/:/app:rw \
+                    docker run --name osv-txt -v /home/psiewert/KURS_ABC_DEVSECOPS/reports:/reports:rw \
                     -t osv-scanner \
                     --lockfile /app/package-lock.json \
                     --format table \
@@ -67,8 +68,8 @@ pipeline {
                 always {
                 sh '''
                 
-                docker cp osv-json:/app/osv-report.json ${WORKSPACE}/wyniki/osv-report.json
-                docker cp osv-txt:/app/osv-report.txt ${WORKSPACE}/wyniki/osv-report.txt
+                docker cp osv-json:/reports/osv-report.json ${WORKSPACE}/wyniki/osv-report.json
+                docker cp osv-txt:/reports/osv-report.txt ${WORKSPACE}/wyniki/osv-report.txt
                 docker rm osv-txt osv-json
 
                 '''
