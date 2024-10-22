@@ -90,7 +90,6 @@ pipeline {
                 sh '''
 
                     docker run --name truffle-txt \
-                    -v "/home/psiewert/KURS_ABC_DEVSECOPS/reports:/wyniki:rw" \
                     -v "$PWD:/pwd" \
                     -t truffle-hog:latest \
                     git https://github.com/Bezpieczny-Kod/abcd-student \
