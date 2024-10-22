@@ -77,6 +77,40 @@ pipeline {
                 }
             }
         }
+        stage('[SAST] truffle-hog') {
+            steps {
+                sh '''
+                    docker run --name truffle-json \
+                    -t truffle-hog:latest \
+                    git https://github.com/Bezpieczny-Kod/abcd-student \
+                    --only-verified \
+                    -v "/home/psiewert/KURS_ABC_DEVSECOPS/reports:/reports:rw" \
+                    --json > /reports/truffle.json || true
+                '''
+                sh '''
+
+                    docker run --name truffle-txt \
+                    -t truffle-hog:latest \
+                    git https://github.com/Bezpieczny-Kod/abcd-student \
+                    --only-verified \
+                    -v "/home/psiewert/KURS_ABC_DEVSECOPS/reports:/reports:rw" \
+                    > /reports/truffle.txt || true
+                
+                    '''
+            }
+            post {
+                
+                always {
+                sh '''
+                
+                docker cp truffle-json:/reports/truffle.json ${WORKSPACE}/wyniki/truffle-report.json
+                docker cp truffle-txt:/reports/truffle.txt ${WORKSPACE}/wyniki/truffle-report.txt
+                docker rm truffle-txt truffle-json
+
+                '''
+                }
+            }
+        }
     }
     post {
         always {
@@ -85,6 +119,7 @@ pipeline {
             echo 'Sending reports to DefectDojo'
             defectDojoPublisher(artifact: 'wyniki/zap_xml_report.xml', productName: 'Juice Shop', scanType: 'ZAP Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             defectDojoPublisher(artifact: 'wyniki/osv-report.json', productName: 'Juice Shop', scanType: 'OSV Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
+            defectDojoPublisher(artifact: 'wyniki/truffle-report.json', productName: 'Juice Shop', scanType: 'Trufflehog Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             }
     }
 }
