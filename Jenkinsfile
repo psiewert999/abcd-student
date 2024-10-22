@@ -81,10 +81,10 @@ pipeline {
             steps {
                 sh '''
                     docker run --name truffle-json \
+                    -v "$PWD:/pwd" \
                     -t truffle-hog:latest \
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
-                    -v "$PWD:/pwd" \
                     --json > ${PWD}/wyniki/truffle-report.json || true
                 '''
                 sh '''
