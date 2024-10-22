@@ -85,7 +85,7 @@ pipeline {
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
                     -v "$PWD:/pwd" \
-                    --json > ${WORKSPACE}/wyniki/truffle-report.json || true
+                    --json > ${PWD}/wyniki/truffle-report.json || true
                 '''
                 sh '''
 
@@ -93,6 +93,7 @@ pipeline {
                     -t truffle-hog:latest \
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
+                    -v "/home/psiewert/KURS_ABC_DEVSECOPS/reports:/wyniki:rw"
                     -v "$PWD:/pwd" \
                     > ${WORKSPACE}/wyniki/truffle-report.txt || true
 
@@ -102,7 +103,7 @@ pipeline {
                 
                 always {
                 sh '''
-                
+                docker cp truffle-txt:/wyniki/truffle-report.txt 
                 docker rm truffle-txt truffle-json
 
                 '''
