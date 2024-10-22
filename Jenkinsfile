@@ -84,7 +84,7 @@ pipeline {
                     -t truffle-hog:latest \
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
-                    -v "/home/psiewert/KURS_ABC_DEVSECOPS/reports:/reports:rw" \
+                    -v "$PWD:/pwd" \
                     --json > ${WORKSPACE}/wyniki/truffle-report.json || true
                 '''
                 sh '''
@@ -93,9 +93,9 @@ pipeline {
                     -t truffle-hog:latest \
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
-                    -v "/home/psiewert/KURS_ABC_DEVSECOPS/reports:/reports:rw" \
+                    -v "$PWD:/pwd" \
                     > ${WORKSPACE}/wyniki/truffle-report.txt || true
-                
+
                     '''
             }
             post {
