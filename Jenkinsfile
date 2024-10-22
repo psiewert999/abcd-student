@@ -103,7 +103,6 @@ pipeline {
                 
                 always {
                 sh '''
-                docker cp truffle-txt:/wyniki/truffle-report.txt 
                 docker rm truffle-txt truffle-json
 
                 '''
