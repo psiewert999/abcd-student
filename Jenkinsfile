@@ -85,7 +85,7 @@ pipeline {
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
                     -v "/home/psiewert/KURS_ABC_DEVSECOPS/reports:/reports:rw" \
-                    --json > /reports/truffle.json || true
+                    --json > ${WORKSPACE}/wyniki/truffle-report.json || true
                 '''
                 sh '''
 
@@ -94,7 +94,7 @@ pipeline {
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
                     -v "/home/psiewert/KURS_ABC_DEVSECOPS/reports:/reports:rw" \
-                    > /reports/truffle.txt || true
+                    > ${WORKSPACE}/wyniki/truffle-report.txt || true
                 
                     '''
             }
