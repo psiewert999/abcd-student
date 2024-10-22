@@ -85,7 +85,7 @@ pipeline {
                     -t truffle-hog:latest \
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
-                    --json > ${PWD}/wyniki/truffle-report.json || true
+                    --json > ${WORKSPACE}/wyniki/truffle-report.json || true
                 '''
                 sh '''
 
