@@ -113,6 +113,9 @@ pipeline {
             echo 'archiwizacja wynikow'
             archiveArtifacts artifacts: 'wyniki/**/*', fingerprint: true, allowEmptyArchive: true
             echo 'Sending reports to DefectDojo'
+            sh '''
+            ls wyniki
+            '''
             defectDojoPublisher(artifact: 'wyniki/zap_xml_report.xml', productName: 'Juice Shop', scanType: 'ZAP Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             defectDojoPublisher(artifact: 'wyniki/osv-report.json', productName: 'Juice Shop', scanType: 'OSV Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             defectDojoPublisher(artifact: 'wyniki/truffle-report.json', productName: 'Juice Shop', scanType: 'Trufflehog Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
