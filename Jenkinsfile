@@ -81,7 +81,6 @@ pipeline {
             steps {
                 sh '''
                     docker run --name truffle-json \
-                    -v "$PWD:/pwd" \
                     -t truffle-hog:latest \
                     git https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
@@ -90,10 +89,9 @@ pipeline {
                 sh '''
 
                     docker run --name truffle-txt \
-                    -v "$PWD:/pwd" \
                     -t truffle-hog:latest \
                     git https://github.com/Bezpieczny-Kod/abcd-student \
-                    --only-verified --branch=main > ${WORKSPACE}/wyniki/truffle-report.txt || true
+                    --only-verified > ${WORKSPACE}/wyniki/truffle-report.txt || true
 
                     '''
             }
