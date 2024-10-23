@@ -81,30 +81,19 @@ pipeline {
             steps {
                 sh '''
                     docker run --name truffle-json \
+                    --rm \
                     -t truffle-hog:latest \
-                    github https://github.com/Bezpieczny-Kod/abcd-student \
+                    github --repo https://github.com/psiewert999/abcd-student \
                     --only-verified \
-                    --pr-comments \
                     --json > ${WORKSPACE}/wyniki/truffle-report.json || true
                 '''
                 sh '''
-
                     docker run --name truffle-txt \
+                    --rm \
                     -t truffle-hog:latest \
-                    github https://github.com/Bezpieczny-Kod/abcd-student \
-                    --pr-comments \
+                    github --repo https://github.com/psiewert999/abcd-student \
                     --only-verified > ${WORKSPACE}/wyniki/truffle-report.txt || true
-
                     '''
-            }
-            post {
-                
-                always {
-                sh '''
-                docker rm truffle-txt truffle-json
-
-                '''
-                }
             }
         }
     }
