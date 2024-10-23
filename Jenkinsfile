@@ -82,7 +82,7 @@ pipeline {
                 sh '''
                     docker run --name truffle-json \
                     --rm \
-                    -t truffle-hog:latest \
+                    truffle-hog:latest \
                     github --repo https://github.com/psiewert999/abcd-student \
                     --only-verified \
                     --json > ${WORKSPACE}/wyniki/truffle-report.json || true
@@ -90,7 +90,7 @@ pipeline {
                 sh '''
                     docker run --name truffle-txt \
                     --rm \
-                    -t truffle-hog:latest \
+                    truffle-hog:latest \
                     github --repo https://github.com/psiewert999/abcd-student \
                     --only-verified > ${WORKSPACE}/wyniki/truffle-report.txt || true
                     '''
