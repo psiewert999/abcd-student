@@ -82,15 +82,17 @@ pipeline {
                 sh '''
                     docker run --name truffle-json \
                     -t truffle-hog:latest \
-                    git https://github.com/Bezpieczny-Kod/abcd-student \
+                    github https://github.com/Bezpieczny-Kod/abcd-student \
                     --only-verified \
+                    --pr-comments \
                     --json > ${WORKSPACE}/wyniki/truffle-report.json || true
                 '''
                 sh '''
 
                     docker run --name truffle-txt \
                     -t truffle-hog:latest \
-                    git https://github.com/Bezpieczny-Kod/abcd-student \
+                    github https://github.com/Bezpieczny-Kod/abcd-student \
+                    --pr-comments \
                     --only-verified > ${WORKSPACE}/wyniki/truffle-report.txt || true
 
                     '''
