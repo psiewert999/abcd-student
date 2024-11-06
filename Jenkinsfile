@@ -104,7 +104,7 @@ pipeline {
             echo 'Sending reports to DefectDojo'
             sh '''
             ls wyniki
-            cat wyniki/truffle-report.json
+            semgrep cli .
             '''
             defectDojoPublisher(artifact: 'wyniki/zap_xml_report.xml', productName: 'Juice Shop', scanType: 'ZAP Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             defectDojoPublisher(artifact: 'wyniki/osv-report.json', productName: 'Juice Shop', scanType: 'OSV Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
