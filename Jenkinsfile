@@ -23,7 +23,7 @@ pipeline {
         stage('[SAST] Semgrep scan') {
             steps {
                 script {
-                    sh 'semgrep scan --config auto --json-output=semgrep-report.json'
+                    sh 'semgrep scan --config auto --json-output=/wyniki/semgrep-report.json'
                     sh 'ls'
 				    }
             }
@@ -111,11 +111,11 @@ pipeline {
             echo 'Sending reports to DefectDojo'
             sh '''
             ls wyniki
-            semgrep cli .
             '''
             defectDojoPublisher(artifact: 'wyniki/zap_xml_report.xml', productName: 'Juice Shop', scanType: 'ZAP Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             defectDojoPublisher(artifact: 'wyniki/osv-report.json', productName: 'Juice Shop', scanType: 'OSV Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             defectDojoPublisher(artifact: 'wyniki/truffle-report.json', productName: 'Juice Shop', scanType: 'Trufflehog Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
+            defectDojoPublisher(artifact: 'wyniki/semgrep-report.json', productName: 'Juice Shop', scanType: 'Semgrep Scan', engagementName: 'patryk.siewert@opi.org.opi.pl')
             }
     }
 }
