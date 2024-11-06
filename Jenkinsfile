@@ -3,6 +3,10 @@ pipeline {
     options {
         skipDefaultCheckout(true)
     }
+    environment {
+
+        SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
+    }
     stages {
         stage('Code checkout from GitHub') {
             steps {
@@ -23,7 +27,8 @@ pipeline {
         stage('[SAST] Semgrep scan') {
             steps {
                 script {
-                    sh 'semgrep ci'
+                    sh 'semgrep scan --config auto'
+                    sh 'ls'
 				    }
             }
         }
