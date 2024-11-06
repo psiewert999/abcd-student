@@ -20,8 +20,14 @@ pipeline {
 				    }
             }
         }
-        
-        stage('[ZAP] passive-scan') {
+        stage('[SAST] Semgrep scan') {
+            steps {
+                script {
+                    sh 'semgrep ci'
+				    }
+            }
+        }
+                stage('[ZAP] passive-scan') {
             steps {
                 sh '''
                     docker run --name zap2 -d\
