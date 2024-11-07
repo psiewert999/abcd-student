@@ -23,8 +23,8 @@ pipeline {
         stage('[SAST] Semgrep scan') {
             steps {
                 script {
-                    sh 'semgrep scan --config auto --json-output=/wyniki/semgrep-report.json'
-                    sh 'ls'
+                    sh 'semgrep scan --config auto --json-output=${WORKSPACE}/wyniki/semgrep-report.json'
+                    sh 'ls ${WORKSPACE}/wyniki'
 				    }
             }
         }
